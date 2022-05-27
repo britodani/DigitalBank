@@ -19,7 +19,7 @@ describe('OpenCart', () => {
     
     });
 
-    it('Cheking', async () => {
+    it('Revisar Cuenta', async () => {
 
         let cuentas = await $('.dropdown-toggle');
         await cuentas.click();
