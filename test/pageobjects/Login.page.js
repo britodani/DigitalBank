@@ -11,7 +11,7 @@ class Login extends BasePage{
     get rememberme(){return $('#remember-me')}
     get signin(){return $('#submit')}
     get signuphere(){return $('=Sign Up Here')}
-    get flash() {return $('.sufee-alert')}
+    get flash() {return $('.badge')}
 
     /**Metodos para iniciar sesion en Digital bank
      * @param {String} user
@@ -25,18 +25,24 @@ class Login extends BasePage{
         
     }
 
-   
-    async loguearenter(){
-        await this.signin.keys('\uE007');
+   /*
+    async loguearenter(username,password){
+        await this.usernamein(username).keys('tab')
+        await this.passwordin(password).keys('tab')
+        await this.signin.keys('enter')
+    }*/
+
+    async loguearclickreme(username,password){
+        await this.vaciarCampoYEnviarTexto(await this.usernamein,username)
+        await this.vaciarCampoYEnviarTexto(await this.passwordin,password);
+        await this.clickearElemento(await this.rememberme)
+        await this.clickearElemento(await this.signin);
     }
 
-    async loguearclickreme(){
-        await this.rememberme.click();
-        await this.signin.click();
-    }
+    
 
     async crearcta(){
-        await this.signuphere.click();
+        await this.clickearElemento(await this.signuphere);
     }
   
 
