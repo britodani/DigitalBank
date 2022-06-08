@@ -3,10 +3,10 @@ import BasePage from '../pageobjects/base.page'
 class Form extends BasePage{
 
 get form(){return $('.login-form')}    
-get titform(){return $('=Title')}
+get formTitle(){return $('=Title')}
 
-async volverLogin() {
-    await super.clickearElemento(await this.titform);
+async volveraLogin() {
+    await super.clickearElemento(await this.formTitle);
     
 }
 
