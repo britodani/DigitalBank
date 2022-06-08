@@ -20,20 +20,21 @@ export default class BasePage {
    async clickearElemento(elemento) {
        await elemento.waitForClickable({ timeout: PAGE_TIMEOUT });
        await elemento.click();
+     
    }
 
-
+ 
    /**
     * Método para enviar texto a un elemento
     * @param {Object} elemento que recibirá el texto
     * @param {String} texto a envíar 
     */
-   async vaciarCampoYEnviarTexto(elemento, texto){
-       await elemento.waitForClickable({ timeout: PAGE_TIMEOUT });
-       await elemento.clearValue();
-       await elemento.click();
-       await elemento.keys(texto);
-   }
+    async vaciarCampoYEnviarTexto(elemento, texto){
+        await elemento.waitForClickable({ timeout: PAGE_TIMEOUT });
+        await elemento.setValue(texto);
+      }
+
+
 
 
 }
