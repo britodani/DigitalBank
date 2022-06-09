@@ -70,4 +70,16 @@ describe('Login Suite', () => {
       
     });
 
+    it('Deberia acceder a la pagina principal cuando se loguea con credenciales validas y luego desloguearse', async () => {
+
+      await LoginPage.abrir('login');      
+      let username = 'nsmith@demo.io'
+      let password = 'Demo123!'
+      await LoginPage.ingresarCredenciales(username, password);
+      await LoginPage.clickEnBotonSubmit()
+      await HomePage.desloguearse()
+      await expect(LoginPage.loginStateFeedback).toHaveTextContaining('Success')
+            
+    });
+
  });
