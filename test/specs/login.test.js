@@ -70,7 +70,7 @@ describe('Login Suite', () => {
       
     });
 
-    it('Deberia acceder a la pagina principal cuando se loguea con credenciales validas y luego desloguearse', async () => {
+    it('Deberia perder la sesion y regresar al login cuando se clickea en boton de log out', async () => {
 
       await LoginPage.abrir('login');      
       let username = 'nsmith@demo.io'
