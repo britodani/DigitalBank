@@ -13,8 +13,5 @@ class HomePage extends BasePage{
        await super.clickearElemento(await this.logout);
    }
 
-  
-
-
 }
 export default new HomePage();

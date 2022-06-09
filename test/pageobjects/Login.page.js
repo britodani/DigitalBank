@@ -22,11 +22,11 @@ class LoginPage extends BasePage{
         await this.vaciarCampoYEnviarTexto(await this.passwordInput,password);
     }
 
-    async ClickEnBotonSubmit(){
+    async clickEnBotonSubmit(){
         await this.clickearElemento(await this.signInButton);  
     }
 
-    async ClickEnCheckboxRememberMe(){
+    async clickEnCheckboxRememberMe(){
         await this.clickearElemento(await this.rememberMeCheckBox)
     }
 
