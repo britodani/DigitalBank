@@ -4,7 +4,7 @@ import BasePage from '../pageobjects/base.page'
 class LoginPage extends BasePage{
 
     //WebElements
-    get title(){return $('.login-logo')}
+    
     get usernameInput(){ return $('#username') }
     get passwordInput(){return $('#password')}
     get rememberMeCheckBox(){return $('#remember-me')}
