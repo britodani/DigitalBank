@@ -1,6 +1,6 @@
 import BasePage from '../pageobjects/base.page'
 
-class RegistroUser extends BasePage{
+class RegistroUserPage extends BasePage{
 
 get form(){return $('.login-form')}    
 get formTitle(){return $('=Title')}
@@ -12,4 +12,4 @@ async volveraLogin() {
 
 
 }
-export default new RegistroUser();
+export default new RegistroUserPage();
