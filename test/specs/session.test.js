@@ -2,7 +2,7 @@ import LoginPage from '../pageobjects/Login.page';
 import HomePage from '../pageobjects/home.page'
 import RegistroUserPage from '../pageobjects/registroUser.page'
 
-describe('Login Suite', () => {
+describe('Session Suite', () => {
   
     it('Deberia acceder a la pagina principal cuando se loguea con credenciales validas', async () => {
 
@@ -68,6 +68,18 @@ describe('Login Suite', () => {
       await LoginPage.irAPaginaDeSignUp();
       await expect(RegistroUserPage.form).toExist();
       
+    });
+
+    it('Deberia perder la sesion y regresar al login cuando se clickea en boton de log out', async () => {
+
+      await LoginPage.abrir('login');      
+      let username = 'nsmith@demo.io'
+      let password = 'Demo123!'
+      await LoginPage.ingresarCredenciales(username, password);
+      await LoginPage.clickEnBotonSubmit()
+      await HomePage.desloguearse()
+      await expect(LoginPage.loginStateFeedback).toHaveTextContaining('Success')
+            
     });
 
  });
