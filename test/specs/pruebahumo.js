@@ -1,7 +1,5 @@
 describe('OpenCart', () => {
-
   
-
     it('login bank', async () => {
 
       await browser.maximizeWindow()

@@ -43,7 +43,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,7 +54,7 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
         browserName: 'firefox',
         acceptInsecureCerts: true
@@ -110,7 +110,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['geckodriver'], 
+    services: ['geckodriver'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -142,6 +142,14 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
+    },
+    dockerOptions: {
+        image: 'selenium/standalone-chrome',
+        healthCheck: 'http://localhost:4444',
+        options: {
+            p: ['4444:4444'],
+            shmSize: '2g'
+        }
     },
     //
     // =====
@@ -212,15 +220,26 @@ exports.config = {
     // },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
-     */
-    // beforeTest: function (test, context) {
-    // },
+     
+     beforeTest: function (test, context) {
+    
+        const chai = require('chai');
+        const chaiWebdriver = require('chai-webdriverio').default;
+        chai.use(chaiWebdriver(browser));
+        global.assert = chai.assert;
+        global.expect = chai.expect; 
+             
+    
+    },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)
      */
-    // beforeHook: function (test, context) {
-    // },
+    /*beforeHook: function (test, context) {
+
+          
+
+     },*/
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
@@ -237,8 +256,11 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (!passed) {
+            await browser.takeScreenshot();
+        }
+    },
 
 
     /**
