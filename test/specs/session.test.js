@@ -9,12 +9,10 @@ describe('Session Suite', function()  {
   DatosCorrectos.forEach(({username, password}) => {
     it(`Deberia acceder a la pagina principal cuando se loguea con credenciales validas ${username, password}`, async () => {
 
-      await LoginPage.abrir('');      
+      await LoginPage.abrir('login');      
       await LoginPage.ingresarCredenciales(username,password);
       await LoginPage.clickEnBotonSubmit()
-      await HomePage.desloguearse()
-      await expect(LoginPage.loginStateFeedback).toHaveTextContaining('Success')
-      //await expect(HomePage.title).toExist();
+      await expect(HomePage.title).toExist();
             
     });
 
