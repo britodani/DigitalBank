@@ -3,6 +3,7 @@ import HomePage from '../pageobjects/home.page'
 import RegistroUserPage from '../pageobjects/registroUser.page'
 import DatosCorrectos from '../datos/userypasscorrectos'
 import DatosIncorrectos from '../datos/userypassincorrecto'
+import DatosRegistroUser from '../datos/registroUser'
 
 describe('Session Suite', function()  {
   
@@ -54,15 +55,6 @@ describe('Session Suite', function()  {
       
     });
 
-
-    it('Debería de acceder al formulario de registro', async () => {
-
-        await LoginPage.abrir('login');      
-        await LoginPage.irAPaginaDeSignUp();
-        await expect(RegistroUserPage.form).toExist();
-        
-    });
-
     it('Deberia perder la sesion y regresar al login cuando se clickea en boton de log out', async () => {
 
       await LoginPage.abrir('login');      
@@ -74,5 +66,14 @@ describe('Session Suite', function()  {
       await expect(LoginPage.loginStateFeedback).toHaveTextContaining('Success')
             
     });
+
+    it('Debería de acceder al formulario de registro', async () => {
+
+      await LoginPage.abrir('login');      
+      await LoginPage.irAPaginaDeSignUp();
+      await expect(RegistroUserPage.form).toExist();
+      
+    });
+    
   
  });
