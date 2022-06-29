@@ -34,15 +34,8 @@ describe('Registro de Usuario', () => {
         });
 
     });
-/*
-      it('Debería de mostrar mensaje al seleccionar una campo', async () => {
 
-        await LoginPage.abrir('login');      
-        await LoginPage.irAPaginaDeSignUp();
-        await RegistroUserPage.mensajeDeCamposAllenar()
-        await expect(RegistroUserPage.numeroSeguroSocialInput).toBeFocused()
-    });
-*/
+
     it('Debería de regresar al login al presionar el titulo del formulario', async () => {
 
         await LoginPage.abrir('login');      
