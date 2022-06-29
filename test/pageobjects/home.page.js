@@ -6,6 +6,8 @@ class HomePage extends BasePage{
     
     get avatar(){return $('.user-avatar')}
     get logout(){return $('.fa-power-off')}
+    get checkingFather(){return $('#checking-menu')}
+    get newChecking(){return $('new-checking-menu-item')}
 
    
    async desloguearse() {
