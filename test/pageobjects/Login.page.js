@@ -5,6 +5,7 @@ class LoginPage extends BasePage{
 
     //WebElements
     
+    get titleDigitalBankLogin(){return $('head > title')}
     get usernameInput(){ return $('#username') }
     get passwordInput(){return $('#password')}
     get rememberMeCheckBox(){return $('#remember-me')}

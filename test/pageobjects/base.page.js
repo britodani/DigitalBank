@@ -32,6 +32,7 @@ export default class BasePage {
     async vaciarCampoYEnviarTexto(elemento, texto){
         await elemento.waitForClickable({ timeout: PAGE_TIMEOUT });
         await elemento.setValue(texto);
+        
       }
 
 
