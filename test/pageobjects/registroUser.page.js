@@ -1,9 +1,7 @@
-const PAGE_TIMEOUT = 10000
 import BasePage from '../pageobjects/base.page'
 
 class RegistroUserPage extends BasePage{
 
-get form(){return $('.login-form')}  
 get titleDigitalBank(){return $('.align-content')}  
 get titleUser(){return $('=Title')}
 get selectBoxTituloUser(){return $('#title')}
@@ -16,8 +14,8 @@ get numeroSeguroSocialInput(){return $('#ssn')}
 get emailInput(){return $('#emailAddress')}
 get passwordInput(){return $('#password')}
 get confirmacionPasswordInput(){return $('#confirmPassword')}
-get botonNext(){return $('.btn')}
-get btnRegistrar(){return $('.btn')}
+get botonNext(){return $('.btn-primary')}
+get btnRegistrar(){return $('.btn-flat')}
 
 
 
@@ -77,11 +75,10 @@ async seleccionarTitulo(option){
      * @param {String} password
 
      */
- async mensajeDeCamposAllenar(){
+ async obtenerTooltipEnCampoNumeroDeSeguroSocial(){
  
     await this.numeroSeguroSocialInput.isFocused()
-    await this.numeroSeguroSocialInput.getAttribute('title');
-    //await this.vaciarCampoYEnviarTexto(await this.passwordInput.getAttribute('title'), password);
+    return await this.numeroSeguroSocialInput.getAttribute('title');
     
 }
 
