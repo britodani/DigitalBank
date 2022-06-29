@@ -71,7 +71,7 @@ describe('Session Suite', function()  {
 
       await LoginPage.abrir('login');      
       await LoginPage.irAPaginaDeSignUp();
-      await expect(RegistroUserPage.form).toExist();
+      await expect(RegistroUserPage.selectBoxTituloUser).toHaveTextContaining('Please select');
       
     });
     
