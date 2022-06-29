@@ -1,2 +1,4 @@
+.vscode
+allure-report
+allure-results
 node_modules
-.vscode/launch.json

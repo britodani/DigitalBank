@@ -13,7 +13,7 @@ get btnNewCheckingSubmit(){return $('#newCheckingSubmit')}
 
 
 /**
-    * Método para seleccionar tipo de cuenta
+    * Método para seleccionar tipo de cuenta a seleccionar 
     
     * @param {String} tipo de cuenta 
     */
