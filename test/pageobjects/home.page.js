@@ -6,12 +6,18 @@ class HomePage extends BasePage{
     
     get avatar(){return $('.user-avatar')}
     get logout(){return $('.fa-power-off')}
+    get checkingFather(){return $('#checking-menu')}
+    get newChecking(){return $('#new-checking-menu-item')}
 
-   
-   async desloguearse() {
+    async seleccionarChecking() {
+        await super.clickearElemento(await this.checkingFather);
+        await super.clickearElemento(await this.newChecking);
+    }   
+
+    async desloguearse() {
        await super.clickearElemento(await this.avatar);
        await super.clickearElemento(await this.logout);
-   }
+    }
 
 }
 export default new HomePage();
